@@ -6,3 +6,10 @@ build
 
 # Ignore Kotlin plugin data
 .kotlin
+.idea/
+*.iml
+out/
+
+# File di sistema operativi
+Thumbs.db
+.DS_Store
