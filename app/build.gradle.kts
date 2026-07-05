@@ -33,8 +33,7 @@ java {
 }
 
 application {
-    // Define the main class for the application.
-    mainClass = "org.example.App"
+    mainClass = "it.unicam.cs.mpgc.rpg129693.Main.Main"
 }
 
 tasks.named<Test>("test") {

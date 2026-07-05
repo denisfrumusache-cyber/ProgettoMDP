@@ -1,8 +1,6 @@
 package it.unicam.cs.mpgc.rpg129693.classiAstratte;
 
-import it.unicam.cs.mpgc.rpg129693.Interfacce.Quirk;
 import it.unicam.cs.mpgc.rpg129693.Utils.CalcolaDanno;
-import it.unicam.cs.mpgc.rpg129693.Utils.StatoAlterato;
 
 import java.util.Objects;
 
@@ -19,7 +17,6 @@ public abstract class Personaggio {
     private int velocita;
     private int tecnica;
     private Quirk quirk;
-    private StatoAlterato stato = StatoAlterato.NORMALE;
     private boolean difesaAttiva;
 
 
@@ -41,7 +38,6 @@ public abstract class Personaggio {
         this.velocita = velocita;
         this.tecnica = tecnica;
         this.quirk = Objects.requireNonNull(quirk,"Il quirk non puo essere null");
-        this.stato = StatoAlterato.NORMALE;
         this.difesaAttiva = false;
     }
 
@@ -158,13 +154,6 @@ public abstract class Personaggio {
         this.quirk = Objects.requireNonNull(quirk, "Il quirk non puo essere null");
     }
 
-    public StatoAlterato getStato() {
-        return stato;
-    }
-
-    public void setStato(StatoAlterato stato) {
-        this.stato = Objects.requireNonNull(stato, "Lo stato non puo essere null");
-    }
 
     public abstract void attaccoSpeciale(Personaggio bersaglio);
 
