@@ -13,8 +13,8 @@ Il software è un RPG tattico che sfida il giocatore a scalare i piani di una to
 ### Istruzioni
 
 ```bash
-git clone <url-del-repository>
-cd <nome-cartella>
+git clone <[url-del-repository](https://github.com/denisfrumusache-cyber/ProgettoMDP)>
+cd <ProgettoMHA>
 ```
 
 ### Build del progetto
