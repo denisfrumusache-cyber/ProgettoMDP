@@ -4,6 +4,8 @@ import it.unicam.cs.mpgc.rpg129693.Interfacce.Quirk;
 import it.unicam.cs.mpgc.rpg129693.Utils.StatoAlterato;
 import org.jspecify.annotations.NonNull;
 
+import java.util.Objects;
+
 @SuppressWarnings("All")
 public abstract class Personaggio {
     private String id;
@@ -22,9 +24,15 @@ public abstract class Personaggio {
 
 
     public Personaggio(String id, String nome, String alias, int hpMax, int staminaMax, int potenza, int velocita, int tecnica, Quirk quirk) {
-        this.id = id;
-        this.nome = nome;
-        this.alias = alias;
+        this.id = Objects.requireNonNull(id,"L'id non puo essere null!!");
+        this.nome = Objects.requireNonNull(nome,"Il nome non puo essere null!!");
+        if (this.nome.isBlank()){
+            throw new IllegalArgumentException("E' stata passata una stringa vuota sul campo nome");
+        }
+        this.alias = Objects.requireNonNull(alias, "L'alias non puo essere null!!");
+        if (hpMax <= 0 || staminaMax <= 0 || potenza < 0 || velocita < 0 || tecnica < 0){
+            throw new IllegalArgumentException("Le statistiche devono avere valori positivi e validi");
+        }
         this.hpMax = hpMax;
         this.hpAttuali = hpMax;
         this.staminaMax = staminaMax;
@@ -32,7 +40,7 @@ public abstract class Personaggio {
         this.potenza = potenza;
         this.velocita = velocita;
         this.tecnica = tecnica;
-        this.quirk = quirk;
+        this.quirk = Objects.requireNonNull(quirk,"Il quirk non puo essere null");
         this.stato = StatoAlterato.NORMALE;
         this.difesaAttiva = false;
     }
@@ -43,7 +51,7 @@ public abstract class Personaggio {
         return id;
     }
     public void setId(String id){
-        this.id = id;
+        this.id = Objects.requireNonNull(id, "L'id non puo essere null!!");
     }
 
     public String getNome() {
@@ -51,6 +59,10 @@ public abstract class Personaggio {
     }
 
     public void setNome(String nome) {
+        Objects.requireNonNull(nome, "Il nome non puo essere null!!");
+        if (nome.isBlank()) {
+            throw new IllegalArgumentException("Il nome non puo essere vuoto");
+        }
         this.nome = nome;
     }
 
@@ -59,7 +71,7 @@ public abstract class Personaggio {
     }
 
     public void setAlias(String alias) {
-        this.alias = alias;
+        this.alias = Objects.requireNonNull(alias, "L'alias non puo essere null!!");
     }
 
     public int getHpMax(){
@@ -67,6 +79,9 @@ public abstract class Personaggio {
     }
 
     public void setHpMax(int hpMax) {
+        if (hpMax <= 0) {
+            throw new IllegalArgumentException("Gli HP max devono essere maggiori di 0");
+        }
         this.hpMax = hpMax;
     }
 
@@ -74,6 +89,9 @@ public abstract class Personaggio {
         return hpAttuali;
     }
     public void setHpAttuali(int Hp){
+        if (Hp < 0) {
+            throw new IllegalArgumentException("Gli HP attuali non possono essere negativi");
+        }
         this.hpAttuali = Hp;
     }
 
@@ -82,6 +100,9 @@ public abstract class Personaggio {
     }
 
     public void setStaminaMax(int staminaMax) {
+        if (staminaMax <= 0) {
+            throw new IllegalArgumentException("La stamina max deve essere maggiore di 0");
+        }
         this.staminaMax = staminaMax;
     }
 
@@ -90,6 +111,9 @@ public abstract class Personaggio {
     }
 
     public void setStaminaAttuale(int staminaAttuale) {
+        if (staminaAttuale < 0) {
+            throw new IllegalArgumentException("La stamina attuale non può essere negativa");
+        }
         this.staminaAttuale = staminaAttuale;
     }
 
@@ -98,6 +122,9 @@ public abstract class Personaggio {
     }
 
     public void setPotenza(int potenza) {
+        if (potenza < 0) {
+            throw new IllegalArgumentException("La potenza non può essere negativa");
+        }
         this.potenza = potenza;
     }
 
@@ -106,6 +133,9 @@ public abstract class Personaggio {
     }
 
     public void setVelocita(int velocita) {
+        if (velocita < 0) {
+            throw new IllegalArgumentException("La velocità non può essere negativa");
+        }
         this.velocita = velocita;
     }
 
@@ -114,6 +144,9 @@ public abstract class Personaggio {
     }
 
     public void setTecnica(int tecnica) {
+        if (tecnica < 0) {
+            throw new IllegalArgumentException("La tecnica non può essere negativa");
+        }
         this.tecnica = tecnica;
     }
 
@@ -122,7 +155,7 @@ public abstract class Personaggio {
     }
 
     public void setQuirk(Quirk quirk) {
-        this.quirk = quirk;
+        this.quirk = Objects.requireNonNull(quirk, "Il quirk non puo essere null");
     }
 
     public StatoAlterato getStato() {
@@ -130,7 +163,7 @@ public abstract class Personaggio {
     }
 
     public void setStato(StatoAlterato stato) {
-        this.stato = stato;
+        this.stato = Objects.requireNonNull(stato, "Lo stato non puo essere null");
     }
 
     public abstract void attaccoSpeciale(Personaggio bersaglio);
@@ -149,8 +182,10 @@ public abstract class Personaggio {
 
         if (difesaAttiva){
             this.hpAttuali -= danno/2;
+        }else{
+            this.hpAttuali -= danno;
         }
-        this.hpAttuali -= danno;
+
         if (this.hpAttuali < 0){
             this.hpAttuali = 0;
         }

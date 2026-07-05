@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "ProgettoMHA"
-include("Main")
+include("App")
