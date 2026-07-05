@@ -45,7 +45,7 @@ public class Eroe extends Personaggio {
     }
 
     public void guadagnaEsperienza(){
-        
+
     }
 
     @Override
