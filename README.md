@@ -43,10 +43,3 @@ Per questo progetto ho usato come AI Gemini, ed in particolar modo Antigravity p
 
 
 
-
-## ⚠️ Nota
-
-Questo è un template: **modificare e adattare tutte le parti necessarie** in base al proprio progetto
-
-
-
