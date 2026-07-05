@@ -1,8 +1,8 @@
 package it.unicam.cs.mpgc.rpg129693.classiAstratte;
 
 import it.unicam.cs.mpgc.rpg129693.Interfacce.Quirk;
+import it.unicam.cs.mpgc.rpg129693.Utils.CalcolaDanno;
 import it.unicam.cs.mpgc.rpg129693.Utils.StatoAlterato;
-import org.jspecify.annotations.NonNull;
 
 import java.util.Objects;
 
@@ -179,17 +179,12 @@ public abstract class Personaggio {
     }
 
     public void riceviDanno(int danno){
-
-        if (difesaAttiva){
-            this.hpAttuali -= danno/2;
-        }else{
-            this.hpAttuali -= danno;
-        }
-
-        if (this.hpAttuali < 0){
+        int dannoCalcolato = CalcolaDanno.calcolaDannoEffettivo(this, danno);
+        this.hpAttuali -= dannoCalcolato;
+        // Se gli Hp dopo il danno subito è un numero negativo, mette gli Hp a 0
+        if (hpAttuali < 0){
             this.hpAttuali = 0;
         }
-
     }
 
     public boolean consumaStamina(int quantita){
@@ -208,10 +203,9 @@ public abstract class Personaggio {
         return this.hpAttuali > 0;
     }
 
-
-
-
-
+    public boolean isDifesaAttiva(){
+        return this.difesaAttiva;
+    }
 
 
 }
