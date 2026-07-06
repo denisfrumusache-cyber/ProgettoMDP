@@ -155,9 +155,22 @@ public abstract class Personaggio {
     }
 
 
-    public abstract void attaccoSpeciale(Personaggio bersaglio);
+    public void attaccoSpeciale(Personaggio bersaglio) {
+        if (bersaglio == null) {
+            throw new IllegalArgumentException("Il bersaglio non può essere null");
+        }
+        int costo = this.getQuirk().getCostoStamina();
+        if (!this.consumaStamina(costo)) {
+            throw new IllegalStateException("Stamina insufficiente per usare il Quirk!");
+        }
+        this.getQuirk().eseguiAzione(this, bersaglio);
+    }
 
-    public abstract void iniziaTurno();
+    public void iniziaTurno() {
+        this.resettaDifesa();
+        int recuperoStamina = Math.min(this.getStaminaMax(), this.getStaminaAttuale() + 10);
+        this.setStaminaAttuale(recuperoStamina);
+    }
 
     public void attaccoBase(Personaggio bersaglio){
         bersaglio.riceviDanno(this.potenza);

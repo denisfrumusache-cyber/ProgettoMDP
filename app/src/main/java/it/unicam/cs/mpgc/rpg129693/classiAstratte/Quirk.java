@@ -3,9 +3,9 @@ package it.unicam.cs.mpgc.rpg129693.classiAstratte;
 import java.util.Objects;
 @SuppressWarnings("all")
 public abstract class Quirk {
-    private String nome;
-    private int costoStamina;
-    private String descrizione;
+    private final String nome;
+    private final int costoStamina;
+    private final String descrizione;
 
     public Quirk(String nome, int costoStamina,String descrizione){
         this.nome = Objects.requireNonNull
@@ -15,9 +15,9 @@ public abstract class Quirk {
             throw new IllegalArgumentException
                     ("Il nome non puo essere una stringa vuota");
 
-        if (costoStamina <= 0)
+        if (costoStamina < 0)
             throw new IllegalArgumentException
-                    ("Il parametro costoStamina deve essere maggiore di 0");
+                    ("Il parametro costoStamina non deve essere negativo");
         this.costoStamina = costoStamina;
 
         this.descrizione = Objects.requireNonNull
