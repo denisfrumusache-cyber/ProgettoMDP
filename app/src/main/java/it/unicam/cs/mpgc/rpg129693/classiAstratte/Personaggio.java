@@ -173,15 +173,19 @@ public abstract class Personaggio {
     }
 
     public void attaccoBase(Personaggio bersaglio){
-        bersaglio.riceviDanno(this.potenza);
+        if (CalcolaDanno.colpoSchivato(this,bersaglio)){
+            System.out.println(bersaglio.getAlias() + " ha schivato l'attacco!");
+            return;
+        }
+        bersaglio.riceviDanno(this, this.potenza);
 
     }
     public void difenditi(){
         this.difesaAttiva = true;
     }
 
-    public void riceviDanno(int danno){
-        int dannoCalcolato = CalcolaDanno.calcolaDannoEffettivo(this, danno);
+    public void riceviDanno(Personaggio avversario, int danno){
+        int dannoCalcolato = CalcolaDanno.calcolaDannoEffettivo(this,avversario, danno);
         this.hpAttuali -= dannoCalcolato;
         // Se gli Hp dopo il danno subito è un numero negativo, mette gli Hp a 0
         if (hpAttuali < 0){

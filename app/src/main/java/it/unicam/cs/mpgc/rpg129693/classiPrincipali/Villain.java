@@ -5,13 +5,15 @@ import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
 public class Villain extends Personaggio {
     private int esperienzaRilasciata;
+    private int livelloTorre;
 
-    public Villain(String id, String nome, String alias, int hpMax, int staminaMax, int potenza, int velocita, int tecnica, Quirk quirk, int esperienzaRilasciata) {
+    public Villain(String id, String nome, String alias, int hpMax, int staminaMax, int potenza, int velocita, int tecnica, Quirk quirk, int esperienzaRilasciata,int livelloTorre) {
         super(id, nome, alias, hpMax, staminaMax, potenza, velocita, tecnica, quirk);
         if (esperienzaRilasciata < 0) {
             throw new IllegalArgumentException("L'esperienza rilasciata non può essere negativa");
         }
         this.esperienzaRilasciata = esperienzaRilasciata;
+        this.livelloTorre = livelloTorre;
     }
 
     public int getEsperienzaRilasciata() {
