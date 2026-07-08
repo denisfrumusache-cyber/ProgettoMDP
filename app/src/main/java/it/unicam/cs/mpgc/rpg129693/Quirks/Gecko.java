@@ -15,9 +15,12 @@ public class Gecko extends Quirk {
 
     @Override
     public void eseguiAzione(Personaggio utilizzatore, Personaggio bersaglio) {
+        utilizzatore.attaccoBase(bersaglio);
+        System.out.println( utilizzatore.getAlias() +" Colpisce con un fendente "+ bersaglio.getAlias() );
         System.out.println(utilizzatore.getAlias() + " si sta rigenerando ed aumenta le sue difese");
         utilizzatore.difenditi();
         recuperaHp(utilizzatore);
+
     }
 
     private static void recuperaHp(Personaggio utilizzatore){
