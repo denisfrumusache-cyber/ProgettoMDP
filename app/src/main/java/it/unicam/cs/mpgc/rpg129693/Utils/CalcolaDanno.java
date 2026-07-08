@@ -14,7 +14,7 @@ public class CalcolaDanno {
 
         if (danno < 0)
             throw new IllegalArgumentException
-                    ("Il danno deve essere maggiore di 0");
+                    ("Il danno non puo essere negativo");
         int dannoFinale = danno;
         // La tecnica determina la probabilità di critico (es. 25 di tecnica = 25% di probabilità)
         boolean CeIlColpoCritico = RANDOM.nextInt(100) < attaccante.getTecnica();
