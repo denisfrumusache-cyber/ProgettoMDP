@@ -8,20 +8,27 @@ import java.util.Map;
 public class Torre{
     private Map<Integer, Villain> nemiciPiani;
     private int livelloCorrente;
+    private int livelloMassimo;
 
     public Torre(){
         this.nemiciPiani = new HashMap<>();
         this.livelloCorrente = 1;
+        this.livelloMassimo = 1;
+
     }
 
     public void aggiungiNemici(Villain nemico){
         if (nemico == null){
             throw new IllegalArgumentException
                     ("E' stato passato un nemico null al metodo aggiungiNemici!");
-
         }
-        int prossimoLivello = this.nemiciPiani.size() + 1;
-        this.nemiciPiani.put(prossimoLivello,nemico);
+        if (this.nemiciPiani.containsKey(nemico.getLivelloTorre())){
+            throw new IllegalArgumentException
+                    ("In questo livello è gia presente un villain!");
+        }
+
+        this.nemiciPiani.put(nemico.getLivelloTorre(),nemico);
+        this.livelloMassimo = Math.max(this.livelloMassimo,nemico.getLivelloTorre());
 
     }
 
@@ -34,7 +41,7 @@ public class Torre{
     }
 
     public boolean isTorreFinita(){
-        return !this.nemiciPiani.containsKey(this.livelloCorrente);
+        return this.livelloCorrente > this.livelloMassimo;
     }
 
     public int getLivelloCorrente() {

@@ -1,0 +1,80 @@
+[
+  {
+    "tipo": "Eroe",
+    "id": "1",
+    "nome": "Izuku Midoriya",
+    "alias": "Deku",
+    "hpMax": 500,
+    "staminaMax": 100,
+    "potenza": 50,
+    "velocita": 30,
+    "tecnica": 40,
+    "quirk": "OneForAll"
+  },
+  {
+    "tipo": "Eroe",
+    "id": "2",
+    "nome": "Katsuki Bakugo",
+    "alias": "Kacchan",
+    "hpMax": 480,
+    "staminaMax": 110,
+    "potenza": 48,
+    "velocita": 45,
+    "tecnica": 35,
+    "quirk": "Esplosione"
+  },
+  {
+    "tipo": "Eroe",
+    "id": "3",
+    "nome": "Shoto Todoroki",
+    "alias": "Todoroki",
+    "hpMax": 470,
+    "staminaMax": 105,
+    "potenza": 44,
+    "velocita": 40,
+    "tecnica": 48,
+    "quirk": "Mezzo Caldo Mezzo Freddo"
+  },
+  {
+    "tipo": "Villain",
+    "id": "v1",
+    "nome": "Shuichi Iguchi",
+    "alias": "Spinner",
+    "hpMax": 300,
+    "staminaMax": 80,
+    "potenza": 20,
+    "velocita": 20,
+    "tecnica": 20,
+    "quirk": "Gecko",
+    "esperienzaRilasciata": 50,
+    "livelloTorre": 1
+  },
+  {
+    "tipo": "Villain",
+    "id": "v2",
+    "nome": "Goto Imasuji",
+    "alias": "Muscular",
+    "hpMax": 400,
+    "staminaMax": 100,
+    "potenza": 40,
+    "velocita": 30,
+    "tecnica": 30,
+    "quirk": "Crescita Muscolare",
+    "esperienzaRilasciata": 100,
+    "livelloTorre": 2
+  },
+  {
+    "tipo": "Villain",
+    "id": "v3",
+    "nome": "Tomura Shigaraki",
+    "alias": "Shigaraki",
+    "hpMax": 500,
+    "staminaMax": 120,
+    "potenza": 45,
+    "velocita": 35,
+    "tecnica": 45,
+    "quirk": "Decadimento",
+    "esperienzaRilasciata": 150,
+    "livelloTorre": 3
+  }
+]

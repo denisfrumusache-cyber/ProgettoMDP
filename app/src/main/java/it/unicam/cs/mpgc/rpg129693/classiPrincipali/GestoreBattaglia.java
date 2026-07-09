@@ -25,13 +25,9 @@ public class GestoreBattaglia {
         }
     }
 
-    /**
-     * Esegue una singola azione scelta per l'eroe.
-     *
-     * @param sceltaAzione 1 = Attacco Base, 2 = Difesa, 3 = Attacco speciale
-     * @return true se l'azione è stata eseguita con successo consumando il turno, 
-     *         false se l'azione è fallita (es. stamina insufficiente) e l'eroe può ancora scegliere.
-     */
+
+    //Esegue una singola azione scelta per l'eroe. 1 = Attacco Base, 2 = Difesa, 3 = Attacco speciale
+
     public boolean eseguiAzioneEroe(int sceltaAzione) {
         if (!turnoEroe || isFinita()) {
             return false;

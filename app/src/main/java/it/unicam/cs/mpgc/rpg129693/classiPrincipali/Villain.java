@@ -12,6 +12,10 @@ public class Villain extends Personaggio {
         if (esperienzaRilasciata < 0) {
             throw new IllegalArgumentException("L'esperienza rilasciata non può essere negativa");
         }
+        if (livelloTorre <= 0){
+            throw new IllegalArgumentException
+                    ("Il livello torre non può essere minore di 1");
+        }
         this.esperienzaRilasciata = esperienzaRilasciata;
         this.livelloTorre = livelloTorre;
     }
@@ -44,6 +48,10 @@ public class Villain extends Personaggio {
         }
 
 
+
+    }
+    public int getLivelloTorre(){
+        return this.livelloTorre;
     }
 
 

@@ -4,16 +4,24 @@ import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
 public class Eroe extends Personaggio {
+    // Costanti per evitare i "Magic Numbers"
+    private static final int XP_SOGLIA_INIZIALE = 100;
+    private static final int INCREMENTO_SOGLIA_LIVELLO = 100;
+    private static final int AUMENTO_HP_MAX = 10;
+    private static final int AUMENTO_STAMINA_MAX = 5;
+    private static final int AUMENTO_POTENZA = 2;
+    private static final int AUMENTO_TECNICA = 1;
+    private static final int AUMENTO_VELOCITA = 1;
+
     private int livello;
     private int esperienza;
     private int sogliaLivello;
-
 
     public Eroe(String id, String nome, String alias, int hpMax, int staminaMax, int potenza, int velocita, int tecnica, Quirk quirk) {
         super(id, nome, alias, hpMax, staminaMax, potenza, velocita, tecnica, quirk);
         this.livello = 1;
         this.esperienza = 0;
-        this.sogliaLivello = 100;
+        this.sogliaLivello = XP_SOGLIA_INIZIALE;
     }
 
     public int getLivello() {
@@ -38,31 +46,38 @@ public class Eroe extends Personaggio {
         this.esperienza = esperienza;
     }
 
+    public int getSogliaLivello() {
+        return this.sogliaLivello;
+    }
 
-    public void guadagnaEsperienza(int exp){
-        if (exp < 0){
-            throw new IllegalArgumentException
-                    ("L'esperienza guadagnata non può essere negativa");
+    public void setSogliaLivello(int sogliaLivello) {
+        if (sogliaLivello <= 0) {
+            throw new IllegalArgumentException("La soglia livello deve essere maggiore di 0");
+        }
+        this.sogliaLivello = sogliaLivello;
+    }
+
+
+    public void guadagnaEsperienza(int exp) {
+        if (exp < 0) {
+            throw new IllegalArgumentException("L'esperienza guadagnata non può essere negativa");
         }
         this.esperienza += exp;
-        while(this.esperienza >= sogliaLivello){
-            this.esperienza -= sogliaLivello;
+        while (this.esperienza >= this.sogliaLivello) {
+            this.esperienza -= this.sogliaLivello;
             this.saliDiLivello();
-
         }
-
     }
 
-    public void saliDiLivello(){
+    private void saliDiLivello() {
         this.livello++;
-        this.setHpMax(this.getHpMax() + 10);
+        this.setHpMax(this.getHpMax() + AUMENTO_HP_MAX);
         this.setHpAttuali(this.getHpMax());
-        this.setStaminaMax(this.getStaminaMax() + 5);
+        this.setStaminaMax(this.getStaminaMax() + AUMENTO_STAMINA_MAX);
         this.setStaminaAttuale(this.getStaminaMax());
-        this.setPotenza(this.getPotenza() + 2);
-        this.setTecnica(this.getTecnica() + 1);
-        this.setVelocita(this.getVelocita() + 1);
-        this.sogliaLivello += 100;
+        this.setPotenza(this.getPotenza() + AUMENTO_POTENZA);
+        this.setTecnica(this.getTecnica() + AUMENTO_TECNICA);
+        this.setVelocita(this.getVelocita() + AUMENTO_VELOCITA);
+        this.sogliaLivello += INCREMENTO_SOGLIA_LIVELLO;
     }
-
 }

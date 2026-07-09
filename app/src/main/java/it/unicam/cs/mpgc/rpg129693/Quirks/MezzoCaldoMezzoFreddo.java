@@ -20,7 +20,7 @@ private boolean usaGhiaccio = true;
     @Override
     public void eseguiAzione(Personaggio utilizzatore, Personaggio bersaglio) {
         if(usaGhiaccio){
-            System.out.println( utilizzatore.getAlias() + "genera un'ondata di ghiaccio!");
+            System.out.println( utilizzatore.getAlias() + " genera un'ondata di ghiaccio!");
             int dannoGhiaccio = utilizzatore.getTecnica();
             bersaglio.riceviDanno(utilizzatore,dannoGhiaccio);
             //Il ghiaccio rallenta il nemico

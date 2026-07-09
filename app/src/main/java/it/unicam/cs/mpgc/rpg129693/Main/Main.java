@@ -4,39 +4,45 @@ import it.unicam.cs.mpgc.rpg129693.classiPrincipali.Eroe;
 import it.unicam.cs.mpgc.rpg129693.classiPrincipali.Villain;
 import it.unicam.cs.mpgc.rpg129693.classiPrincipali.Torre;
 import it.unicam.cs.mpgc.rpg129693.classiPrincipali.GestoreBattaglia;
-import it.unicam.cs.mpgc.rpg129693.Quirks.OneForAll;
-import it.unicam.cs.mpgc.rpg129693.Quirks.Gecko;
-import it.unicam.cs.mpgc.rpg129693.Quirks.CrescitaMuscolare;
-import it.unicam.cs.mpgc.rpg129693.Quirks.Decadimento;
+import it.unicam.cs.mpgc.rpg129693.Data.CaricatorePersonaggi;
 import java.util.Scanner;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Creazione dell'eroe del giocatore
-        Eroe deku = new Eroe(
-            "1",
-            "Izuku Midoriya",
-            "Deku",
-            500, // hpMax
-            50, // staminaMax
-            50,  // potenza
-            30,  // velocita
-            40,  // tecnica
-            new OneForAll()
-        );
-
-        // Creazione della Torre e inserimento dei nemici per piano
-        Torre torre = new Torre();
-        torre.aggiungiNemici(new Villain("v1", "Shuichi Iguchi", "Spinner", 300,25, 20, 20, 20, new Gecko(), 50, 1));
-        torre.aggiungiNemici(new Villain("v2", "Goto Imasuji", "Muscular", 400, 30, 40, 30, 30, new CrescitaMuscolare(), 100, 2));
-        torre.aggiungiNemici(new Villain("v3", "Tomura Shigaraki", "Shigaraki", 500, 80, 45, 35, 45, new Decadimento(), 150, 3));
-
+        // Carichiamo l'eroe e la torre popolata direttamente dal file personaggi.json
+        CaricatorePersonaggi caricatore = new CaricatorePersonaggi("/personaggi.json");
+        Torre torre = caricatore.getTorre();
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("=== BENVENUTO NELLA TORRE DEI COMBATTIMENTI ===");
+        System.out.println("Seleziona il tuo Eroe:");
+        List<Eroe> eroiDisponibili = caricatore.getEroi();
+        for (int i = 0; i < eroiDisponibili.size(); i++) {
+            Eroe e = eroiDisponibili.get(i);
+            System.out.println((i + 1) + ") " + e.getAlias() + " (Quirk: " + e.getQuirk().getNome() + ")");
+        }
+        
+        int sceltaEroe = -1;
+        while (sceltaEroe < 0 || sceltaEroe >= eroiDisponibili.size()) {
+            System.out.print("Scelta (numero): ");
+            if (scanner.hasNextInt()) {
+                sceltaEroe = scanner.nextInt() - 1;
+                if (sceltaEroe < 0 || sceltaEroe >= eroiDisponibili.size()) {
+                    System.out.println("Numero non valido. Riprova.");
+                }
+            } else {
+                scanner.next(); // Consuma input non valido
+                System.out.println("Inserisci un numero valido!");
+            }
+        }
+
+        Eroe eroeSelezionato = eroiDisponibili.get(sceltaEroe);
+        System.out.println("\nHai selezionato: " + eroeSelezionato.getAlias() + "!");
         System.out.println("Sconfiggi tutti i Villain per completare la scalata!");
 
         // Loop principale dei piani della torre
-        while (deku.eVivo() && !torre.isTorreFinita()) {
+        while (eroeSelezionato.eVivo() && !torre.isTorreFinita()) {
             Villain nemicoCorrente = torre.getNemicoCorrente();
             
             System.out.println("\n=================================");
@@ -45,12 +51,12 @@ public class Main {
             System.out.println("=================================");
 
             // Istanziamo il gestore per la singola battaglia
-            GestoreBattaglia scontro = new GestoreBattaglia(deku, nemicoCorrente);
+            GestoreBattaglia scontro = new GestoreBattaglia(eroeSelezionato, nemicoCorrente);
 
             // Loop della singola battaglia
             while (!scontro.isFinita()) {
                 System.out.println("\nStato combattenti:");
-                System.out.println(deku.getAlias() + " -> HP: " + deku.getHpAttuali() + "/" + deku.getHpMax() + " | Stamina: " + deku.getStaminaAttuale() + "/" + deku.getStaminaMax());
+                System.out.println(eroeSelezionato.getAlias() + " -> HP: " + eroeSelezionato.getHpAttuali() + "/" + eroeSelezionato.getHpMax() + " | Stamina: " + eroeSelezionato.getStaminaAttuale() + "/" + eroeSelezionato.getStaminaMax());
                 System.out.println(nemicoCorrente.getAlias() + " -> HP: " + nemicoCorrente.getHpAttuali() + "/" + nemicoCorrente.getHpMax() + " | Stamina: " + nemicoCorrente.getStaminaAttuale() + "/" + nemicoCorrente.getStaminaMax());
                 System.out.println("------------------------");
 
@@ -58,7 +64,7 @@ public class Main {
                     System.out.println("È il tuo turno! Scegli l'azione:");
                     System.out.println("1) Attacco Base");
                     System.out.println("2) Difesa");
-                    System.out.println("3) Quirk (" + deku.getQuirk().getNome() + " - Costo: " + deku.getQuirk().getCostoStamina() + ")");
+                    System.out.println("3) Quirk (" + eroeSelezionato.getQuirk().getNome() + " - Costo: " + eroeSelezionato.getQuirk().getCostoStamina() + ")");
                     System.out.print("Scelta: ");
 
                     if (scanner.hasNextInt()) {
@@ -78,21 +84,21 @@ public class Main {
             }
 
             // Fine della singola battaglia
-            if (deku.eVivo()) {
+            if (eroeSelezionato.eVivo()) {
                 System.out.println("\nHai sconfitto " + nemicoCorrente.getAlias() + "!");
-                deku.guadagnaEsperienza(nemicoCorrente.getEsperienzaRilasciata());
-                System.out.println("Livello attuale Deku: " + deku.getLivello() + " | Esperienza: " + deku.getEsperienza() + "/100");
+                eroeSelezionato.guadagnaEsperienza(nemicoCorrente.getEsperienzaRilasciata());
+                System.out.println("Livello attuale " + eroeSelezionato.getAlias() + ": " + eroeSelezionato.getLivello() + " | Esperienza: " + eroeSelezionato.getEsperienza() + "/100");
                 
                 // Passiamo al livello successivo della torre
                 torre.avanzaLivello();
             } else {
-                System.out.println("\nDeku è stato sconfitto... Scontro terminato.");
+                System.out.println("\n" + eroeSelezionato.getAlias() + " è stato sconfitto... Scontro terminato.");
                 break;
             }
         }
 
         // Verifica completamento della torre
-        if (torre.isTorreFinita() && deku.eVivo()) {
+        if (torre.isTorreFinita() && eroeSelezionato.eVivo()) {
             System.out.println("\n=======================================================");
             System.out.println("COMPLIMENTI! Hai completato tutti i piani della torre!");
             System.out.println("=======================================================");
