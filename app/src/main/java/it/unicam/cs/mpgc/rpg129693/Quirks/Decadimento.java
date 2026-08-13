@@ -22,23 +22,21 @@ public class Decadimento extends Quirk {
     @Override
     public void eseguiAzione(Personaggio utilizzatore, Personaggio bersaglio) {
         if (CalcolaDanno.colpoSchivato(utilizzatore, bersaglio)) {
-            System.out.println(bersaglio.getAlias() + " è riuscito a schivare il tocco di " + utilizzatore.getAlias());
+            System.out.println(bersaglio.getAlias() + " ha schivato il tocco di " + utilizzatore.getAlias());
             return;
         }
-        
-        System.out.println(utilizzatore.getAlias() + " tocca il bersaglio con tutte e 5 le dita e attiva Decadimento!");
+        System.out.println(utilizzatore.getAlias() + " attiva Decadimento!");
+        applicaDecadimento(utilizzatore, bersaglio);
+    }
+
+    private void applicaDecadimento(Personaggio utilizzatore, Personaggio bersaglio) {
         disintegraPersonaggio(bersaglio);
-        
-        int danno = utilizzatore.getPotenza() * MOLTIPLICATORE_POTENZA;
-        bersaglio.riceviDanno(utilizzatore, danno);
-        
-        System.out.println("Il corpo di " + bersaglio.getAlias() + " si sta disintegrando! Potenza e Velocità ridotte di " + DECREMENTO_STATISTICHE + "!");
+        bersaglio.riceviDanno(utilizzatore, utilizzatore.getPotenza() * MOLTIPLICATORE_POTENZA);
     }
 
     private static void disintegraPersonaggio(Personaggio personaggio) {
         int velocitaDecrementata = Math.max(VALORE_MINIMO_STATISTICA, personaggio.getVelocita() - DECREMENTO_STATISTICHE);
         int potenzaDecrementata = Math.max(VALORE_MINIMO_STATISTICA, personaggio.getPotenza() - DECREMENTO_STATISTICHE);
-        
         personaggio.setVelocita(velocitaDecrementata);
         personaggio.setPotenza(potenzaDecrementata);
     }

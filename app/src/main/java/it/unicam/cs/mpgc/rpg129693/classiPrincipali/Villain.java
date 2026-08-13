@@ -7,14 +7,13 @@ public class Villain extends Personaggio {
     private int esperienzaRilasciata;
     private int livelloTorre;
 
-    public Villain(String id, String nome, String alias, int hpMax, int staminaMax, int potenza, int velocita, int tecnica, Quirk quirk, int esperienzaRilasciata,int livelloTorre) {
+    public Villain(String id, String nome, String alias, int hpMax, int staminaMax, int potenza, int velocita, int tecnica, Quirk quirk, int esperienzaRilasciata, int livelloTorre) {
         super(id, nome, alias, hpMax, staminaMax, potenza, velocita, tecnica, quirk);
         if (esperienzaRilasciata < 0) {
             throw new IllegalArgumentException("L'esperienza rilasciata non può essere negativa");
         }
-        if (livelloTorre <= 0){
-            throw new IllegalArgumentException
-                    ("Il livello torre non può essere minore di 1");
+        if (livelloTorre <= 0) {
+            throw new IllegalArgumentException("Il livello torre non può essere minore di 1");
         }
         this.esperienzaRilasciata = esperienzaRilasciata;
         this.livelloTorre = livelloTorre;
@@ -31,28 +30,34 @@ public class Villain extends Personaggio {
         this.esperienzaRilasciata = esperienzaRilasciata;
     }
 
-    public void decidiMossaDaEseguire(Personaggio bersaglio){
-        int costoQuirk = this.getQuirk().getCostoStamina();
-        if (this.getStaminaAttuale() >= costoQuirk){
-            this.attaccoSpeciale(bersaglio);
-            System.out.println( this.getAlias() + " usa il suo quirk!");
-        }else{
-            if (this.getHpAttuali() < (this.getHpMax() * 0.25)){
-                this.difenditi();
-                System.out.println(this.getAlias() + " si difende!");
-
-            }else{
-                this.attaccoBase(bersaglio);
-                System.out.println( this.getAlias() + " esegue un attacco fisico!");
-            }
-        }
-
-
-
-    }
-    public int getLivelloTorre(){
+    public int getLivelloTorre() {
         return this.livelloTorre;
     }
 
+    public void eseguiTurno(Personaggio bersaglio) {
+        int mossa = scegliMossa();
+        eseguiMossa(mossa, bersaglio);
+    }
 
+    private int scegliMossa() {
+        if (haStaminaPerQuirk()) return 3;
+        if (hpCritici())         return 2;
+        return 1;
+    }
+
+    private boolean haStaminaPerQuirk() {
+        return getStaminaAttuale() >= getQuirk().getCostoStamina();
+    }
+
+    private boolean hpCritici() {
+        return getHpAttuali() < getHpMax() * 0.25;
+    }
+
+    private void eseguiMossa(int mossa, Personaggio bersaglio) {
+        switch (mossa) {
+            case 3 -> { attaccoSpeciale(bersaglio); System.out.println(getAlias() + " usa il suo quirk!"); }
+            case 2 -> { difenditi();                System.out.println(getAlias() + " si difende!"); }
+            default -> { attaccoBase(bersaglio);    System.out.println(getAlias() + " esegue un attacco fisico!"); }
+        }
+    }
 }

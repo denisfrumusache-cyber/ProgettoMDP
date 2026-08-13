@@ -4,7 +4,6 @@ import it.unicam.cs.mpgc.rpg129693.Utils.CalcolaDanno;
 
 import java.util.Objects;
 
-@SuppressWarnings("All")
 public abstract class Personaggio {
     private String id;
     private String nome;
@@ -19,15 +18,15 @@ public abstract class Personaggio {
     private Quirk quirk;
     private boolean difesaAttiva;
 
-
     public Personaggio(String id, String nome, String alias, int hpMax, int staminaMax, int potenza, int velocita, int tecnica, Quirk quirk) {
-        this.id = Objects.requireNonNull(id,"L'id non puo essere null!!");
-        this.nome = Objects.requireNonNull(nome,"Il nome non puo essere null!!");
-        if (this.nome.isBlank()){
+        this.id = Objects.requireNonNull(id, "L'id non puo essere null!!");
+        this.nome = Objects.requireNonNull(nome, "Il nome non puo essere null!!");
+        if (this.nome.isBlank()) {
             throw new IllegalArgumentException("E' stata passata una stringa vuota sul campo nome");
         }
         this.alias = Objects.requireNonNull(alias, "L'alias non puo essere null!!");
-        if (hpMax <= 0 || staminaMax <= 0 || potenza < 0 || velocita < 0 || tecnica < 0){
+
+        if (hpMax <= 0 || staminaMax <= 0 || potenza < 0 || velocita < 0 || tecnica < 0) {
             throw new IllegalArgumentException("Le statistiche devono avere valori positivi e validi");
         }
         this.hpMax = hpMax;
@@ -37,16 +36,15 @@ public abstract class Personaggio {
         this.potenza = potenza;
         this.velocita = velocita;
         this.tecnica = tecnica;
-        this.quirk = Objects.requireNonNull(quirk,"Il quirk non puo essere null");
+        this.quirk = Objects.requireNonNull(quirk, "Il quirk non puo essere null");
         this.difesaAttiva = false;
     }
-
-
 
     public String getId() {
         return id;
     }
-    public void setId(String id){
+
+    public void setId(String id) {
         this.id = Objects.requireNonNull(id, "L'id non puo essere null!!");
     }
 
@@ -62,7 +60,7 @@ public abstract class Personaggio {
         this.nome = nome;
     }
 
-    public String getAlias(){
+    public String getAlias() {
         return this.alias;
     }
 
@@ -70,7 +68,7 @@ public abstract class Personaggio {
         this.alias = Objects.requireNonNull(alias, "L'alias non puo essere null!!");
     }
 
-    public int getHpMax(){
+    public int getHpMax() {
         return this.hpMax;
     }
 
@@ -84,11 +82,12 @@ public abstract class Personaggio {
     public int getHpAttuali() {
         return hpAttuali;
     }
-    public void setHpAttuali(int Hp){
-        if (Hp < 0) {
+
+    public void setHpAttuali(int hp) {
+        if (hp < 0) {
             throw new IllegalArgumentException("Gli HP attuali non possono essere negativi");
         }
-        this.hpAttuali = Hp;
+        this.hpAttuali = hp;
     }
 
     public int getStaminaMax() {
@@ -124,7 +123,7 @@ public abstract class Personaggio {
         this.potenza = potenza;
     }
 
-    public int getVelocita(){
+    public int getVelocita() {
         return velocita;
     }
 
@@ -154,13 +153,11 @@ public abstract class Personaggio {
         this.quirk = Objects.requireNonNull(quirk, "Il quirk non puo essere null");
     }
 
-
     public boolean attaccoSpeciale(Personaggio bersaglio) {
         if (bersaglio == null) {
             throw new IllegalArgumentException("Il bersaglio non può essere null");
         }
-        int costo = this.getQuirk().getCostoStamina();
-        if (!this.consumaStamina(costo)) {
+        if (!consumaStamina(this.getQuirk().getCostoStamina())) {
             return false;
         }
         this.getQuirk().eseguiAzione(this, bersaglio);
@@ -168,51 +165,53 @@ public abstract class Personaggio {
     }
 
     public void iniziaTurno() {
-        this.resettaDifesa();
-        int recuperoStamina = Math.min(this.getStaminaMax(), this.getStaminaAttuale() + 10);
-        this.setStaminaAttuale(recuperoStamina);
+        resettaDifesa();
+        recuperaStamina();
     }
 
-    public void attaccoBase(Personaggio bersaglio){
-        if (CalcolaDanno.colpoSchivato(this,bersaglio)){
+    private void recuperaStamina() {
+        int nuovaStamina = Math.min(staminaMax, staminaAttuale + 10);
+        setStaminaAttuale(nuovaStamina);
+    }
+
+    public void attaccoBase(Personaggio bersaglio) {
+        if (CalcolaDanno.colpoSchivato(this, bersaglio)) {
             System.out.println(bersaglio.getAlias() + " ha schivato l'attacco!");
             return;
         }
         bersaglio.riceviDanno(this, this.potenza);
-
     }
-    public void difenditi(){
+
+    public void difenditi() {
         this.difesaAttiva = true;
     }
 
-    public void riceviDanno(Personaggio avversario, int danno){
-        int dannoCalcolato = CalcolaDanno.calcolaDannoEffettivo(this,avversario, danno);
-        this.hpAttuali -= dannoCalcolato;
-        // Se gli Hp dopo il danno subito è un numero negativo, mette gli Hp a 0
-        if (hpAttuali < 0){
-            this.hpAttuali = 0;
-        }
+    public void riceviDanno(Personaggio avversario, int danno) {
+        int dannoCalcolato = CalcolaDanno.calcolaDannoEffettivo(this, avversario, danno);
+        applicaDanno(dannoCalcolato);
     }
 
-    public boolean consumaStamina(int quantita){
-        if(this.staminaAttuale < quantita){
+    private void applicaDanno(int danno) {
+        hpAttuali = Math.max(0, hpAttuali - danno);
+    }
+
+    public boolean consumaStamina(int quantita) {
+        if (this.staminaAttuale < quantita) {
             return false;
         }
         this.staminaAttuale -= quantita;
         return true;
     }
 
-    public void resettaDifesa(){
+    public void resettaDifesa() {
         this.difesaAttiva = false;
     }
 
-    public boolean eVivo(){
+    public boolean eVivo() {
         return this.hpAttuali > 0;
     }
 
-    public boolean isDifesaAttiva(){
+    public boolean isDifesaAttiva() {
         return this.difesaAttiva;
     }
-
-
 }

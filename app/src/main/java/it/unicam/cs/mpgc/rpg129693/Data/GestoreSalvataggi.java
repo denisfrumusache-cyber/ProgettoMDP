@@ -11,28 +11,22 @@ public class GestoreSalvataggi {
     private static final String NOME_FILE_SALVATAGGIO = "salvataggio.json";
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-
-    // Salva lo stato di gioco su file usando BufferedWriter
+    /** Salva lo stato corrente di gioco su file. */
     public static void salvaPartita(Eroe eroe, Torre torre) {
-       StatoSalvataggio salvataggio = new StatoSalvataggio(eroe, torre);
-       try (FileWriter fileWriter = new FileWriter(NOME_FILE_SALVATAGGIO);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)){
-           String salvataggioJson = GSON.toJson(salvataggio);
-           bufferedWriter.write(salvataggioJson);
-           System.out.println("Salvataggio effettuato con successo");
-
-       }catch (IOException e){
-           System.out.println("Qualcosa e' andato storto durante il salvataggio:" + e.getMessage());
-       }
+        StatoSalvataggio salvataggio = new StatoSalvataggio(eroe, torre);
+        try (FileWriter fileWriter = new FileWriter(NOME_FILE_SALVATAGGIO);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            bufferedWriter.write(GSON.toJson(salvataggio));
+            System.out.println("Salvataggio effettuato con successo");
+        } catch (IOException e) {
+            System.out.println("Qualcosa e' andato storto durante il salvataggio:" + e.getMessage());
+        }
     }
 
-    // Carica lo stato di gioco da file usando BufferedReader
+    /** @return lo stato salvato, o null se non esiste alcun salvataggio. */
     public static StatoSalvataggio caricaPartita() {
         File file = new File(NOME_FILE_SALVATAGGIO);
-        if (!file.exists()) {
-            return null; // Nessun salvataggio presente
-        }
-
+        if (!file.exists()) return null;
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             return GSON.fromJson(bufferedReader, StatoSalvataggio.class);
@@ -42,11 +36,12 @@ public class GestoreSalvataggi {
         }
     }
 
-    // Elimina il file di salvataggio (es. quando il giocatore perde o vince la torre)
+    /** Elimina il file di salvataggio. */
     public static void eliminaSalvataggio() {
         File file = new File(NOME_FILE_SALVATAGGIO);
         if (file.exists()) {
             file.delete();
         }
+
     }
 }

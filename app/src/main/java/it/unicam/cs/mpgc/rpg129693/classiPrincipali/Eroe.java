@@ -4,7 +4,6 @@ import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
 public class Eroe extends Personaggio {
-    // Costanti per evitare i "Magic Numbers"
     private static final int XP_SOGLIA_INIZIALE = 100;
     private static final int INCREMENTO_SOGLIA_LIVELLO = 100;
     private static final int AUMENTO_HP_MAX = 10;
@@ -57,27 +56,38 @@ public class Eroe extends Personaggio {
         this.sogliaLivello = sogliaLivello;
     }
 
-
     public void guadagnaEsperienza(int exp) {
         if (exp < 0) {
             throw new IllegalArgumentException("L'esperienza guadagnata non può essere negativa");
         }
         this.esperienza += exp;
-        while (this.esperienza >= this.sogliaLivello) {
-            this.esperienza -= this.sogliaLivello;
-            this.saliDiLivello();
+        verificaSalitaDiLivello();
+    }
+
+    private void verificaSalitaDiLivello() {
+        while (esperienza >= sogliaLivello) {
+            esperienza -= sogliaLivello;
+            saliDiLivello();
         }
     }
 
     private void saliDiLivello() {
-        this.livello++;
-        this.setHpMax(this.getHpMax() + AUMENTO_HP_MAX);
-        this.setHpAttuali(this.getHpMax());
-        this.setStaminaMax(this.getStaminaMax() + AUMENTO_STAMINA_MAX);
-        this.setStaminaAttuale(this.getStaminaMax());
-        this.setPotenza(this.getPotenza() + AUMENTO_POTENZA);
-        this.setTecnica(this.getTecnica() + AUMENTO_TECNICA);
-        this.setVelocita(this.getVelocita() + AUMENTO_VELOCITA);
-        this.sogliaLivello += INCREMENTO_SOGLIA_LIVELLO;
+        livello++;
+        incrementaStatistiche();
+        aggiornaSoglia();
+    }
+
+    private void incrementaStatistiche() {
+        setHpMax(getHpMax() + AUMENTO_HP_MAX);
+        setHpAttuali(getHpMax());
+        setStaminaMax(getStaminaMax() + AUMENTO_STAMINA_MAX);
+        setStaminaAttuale(getStaminaMax());
+        setPotenza(getPotenza() + AUMENTO_POTENZA);
+        setTecnica(getTecnica() + AUMENTO_TECNICA);
+        setVelocita(getVelocita() + AUMENTO_VELOCITA);
+    }
+
+    private void aggiornaSoglia() {
+        sogliaLivello += INCREMENTO_SOGLIA_LIVELLO;
     }
 }

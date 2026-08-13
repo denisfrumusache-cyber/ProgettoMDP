@@ -10,72 +10,61 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("all")
 public class CaricatorePersonaggi {
     // Record d'appoggio per mappare il JSON
     private record DatiPersonaggio(
             String tipo, String id, String nome, String alias,
             int hpMax, int staminaMax, int potenza, int velocita, int tecnica,
             String quirk, int esperienzaRilasciata, int livelloTorre
-    ){}
-    
+    ) {}
+
     private List<Eroe> eroi;
     private Torre nemici;
 
     public CaricatorePersonaggi(String risorsaJson) {
         this.eroi = new ArrayList<>();
         this.nemici = new Torre();
-        this.carica(risorsaJson);
+        carica(risorsaJson);
     }
 
-    private void carica(String risorsaJson){
-        Gson gson = new Gson();
+    private void carica(String risorsaJson) {
+        DatiPersonaggio[] dati = leggiDatiJson(risorsaJson);
+        for (DatiPersonaggio dato : dati) {
+            registraPersonaggio(dato);
+        }
+    }
+
+    private DatiPersonaggio[] leggiDatiJson(String risorsaJson) {
         InputStream stream = CaricatorePersonaggi.class.getResourceAsStream(risorsaJson);
         if (stream == null) {
             throw new RuntimeException("File di risorse JSON non trovato: " + risorsaJson);
         }
-
         try (Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
-             BufferedReader bufferReader = new BufferedReader(reader)) {
-             
-            DatiPersonaggio[] datiPersonaggi = gson.fromJson(bufferReader, DatiPersonaggio[].class);
-
-            for (DatiPersonaggio dato : datiPersonaggi){
-                Quirk quirkPersonaggio = QuirkFactory.creaQuirk(dato.quirk());
-                
-                if ("Eroe".equalsIgnoreCase(dato.tipo())){
-                    Eroe eroe = new Eroe(
-                        dato.id(), 
-                        dato.nome(), 
-                        dato.alias(),
-                        dato.hpMax(),
-                        dato.staminaMax(),
-                        dato.potenza(),
-                        dato.velocita(),
-                        dato.tecnica(), 
-                        quirkPersonaggio
-                    );
-                    eroi.add(eroe);
-                } else if ("Villain".equalsIgnoreCase(dato.tipo())){
-                    Villain villain = new Villain(
-                        dato.id(), 
-                        dato.nome(), 
-                        dato.alias(),
-                        dato.hpMax(),
-                        dato.staminaMax(),
-                        dato.potenza(),
-                        dato.velocita(),
-                        dato.tecnica(), 
-                        quirkPersonaggio,
-                        dato.esperienzaRilasciata(),
-                        dato.livelloTorre()
-                    );
-                    nemici.aggiungiNemici(villain);
-                }
-            }
-        } catch (IOException e){
-            System.out.println("Qualcosa è andato storto: " + e.getMessage());
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+            return new Gson().fromJson(bufferedReader, DatiPersonaggio[].class);
+        } catch (IOException e) {
+            throw new RuntimeException("Errore durante la lettura del file JSON: " + e.getMessage(), e);
         }
+    }
+
+    private void registraPersonaggio(DatiPersonaggio dato) {
+        if ("Eroe".equalsIgnoreCase(dato.tipo()))
+            eroi.add(creaEroe(dato));
+        else if ("Villain".equalsIgnoreCase(dato.tipo()))
+            nemici.aggiungiNemici(creaVillain(dato));
+    }
+
+    private Eroe creaEroe(DatiPersonaggio dato) {
+        Quirk quirk = QuirkFactory.creaQuirk(dato.quirk());
+        return new Eroe(dato.id(), dato.nome(), dato.alias(), dato.hpMax(), dato.staminaMax(),
+                dato.potenza(), dato.velocita(), dato.tecnica(), quirk);
+    }
+
+    private Villain creaVillain(DatiPersonaggio dato) {
+        Quirk quirk = QuirkFactory.creaQuirk(dato.quirk());
+        return new Villain(dato.id(), dato.nome(), dato.alias(), dato.hpMax(), dato.staminaMax(),
+                dato.potenza(), dato.velocita(), dato.tecnica(), quirk,
+                dato.esperienzaRilasciata(), dato.livelloTorre());
     }
 
     public List<Eroe> getEroi() {

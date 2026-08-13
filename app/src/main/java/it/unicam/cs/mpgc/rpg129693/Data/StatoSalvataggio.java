@@ -21,10 +21,10 @@ public class StatoSalvataggio {
     private String nomeQuirk;
     private int livelloTorreCorrente;
 
-    // Costruttore vuoto richiesto da Gson
+    /** Costruttore vuoto richiesto da Gson. */
     public StatoSalvataggio() {}
 
-    // Crea un'istantanea dello stato del gioco
+    /** Crea un'istantanea dello stato di gioco corrente. */
     public StatoSalvataggio(Eroe eroe, Torre torre) {
         this.id = eroe.getId();
         this.nome = eroe.getNome();
@@ -43,20 +43,11 @@ public class StatoSalvataggio {
         this.livelloTorreCorrente = torre.getLivelloCorrente();
     }
 
-    // Ricostruisce l'oggetto Eroe a partire dallo stato salvato
+    /** Ricostruisce un Eroe a partire dai dati salvati. */
     public Eroe ricostruisciEroe() {
         Quirk quirk = QuirkFactory.creaQuirk(this.nomeQuirk);
-        Eroe eroe = new Eroe(
-            this.id, 
-            this.nome, 
-            this.alias, 
-            this.hpMax, 
-            this.staminaMax, 
-            this.potenza, 
-            this.velocita, 
-            this.tecnica, 
-            quirk
-        );
+        Eroe eroe = new Eroe(this.id, this.nome, this.alias, this.hpMax, this.staminaMax,
+                this.potenza, this.velocita, this.tecnica, quirk);
         eroe.setLivello(this.livello);
         eroe.setEsperienza(this.esperienza);
         eroe.setSogliaLivello(this.sogliaLivello);
