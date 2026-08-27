@@ -28,6 +28,8 @@ dependencies {
     // This dependency is used by the application.
     implementation(libs.guava)
     implementation("com.google.code.gson:gson:2.11.0")
+    implementation("org.openjfx:javafx-controls:21.0.1")
+    implementation("org.openjfx:javafx-fxml:21.0.1")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -39,6 +41,10 @@ java {
 
 application {
     mainClass = "it.unicam.cs.mpgc.rpg129693.Main.Main"
+}
+javafx {
+    version = "21"
+    modules = listOf("javafx.controls", "javafx.graphics", "javafx.fxml")
 }
 
 tasks.named<Test>("test") {
