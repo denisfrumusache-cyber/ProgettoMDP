@@ -30,7 +30,7 @@
             <Insets bottom="25.0" left="50.0" right="50.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <VBox fx:id="CardDeku" alignment="TOP_CENTER" onMouseClicked="#onCardCliccata" prefHeight="458.0" prefWidth="225.0" spacing="10.0" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-padding: 15; -fx-border-width: 3;">
+            <VBox fx:id="cardDeku" alignment="TOP_CENTER" onMouseClicked="#onCardCliccata" prefHeight="458.0" prefWidth="225.0" spacing="10.0" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-padding: 15; -fx-border-width: 3;">
                <children>
                   <ImageView fitHeight="137.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
                      <image>
