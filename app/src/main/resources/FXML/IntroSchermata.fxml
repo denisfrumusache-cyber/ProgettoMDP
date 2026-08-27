@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg129693.Controller.StoriaIntroController">
+   <children>
+      <VBox fx:id="btnContinua" alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="60.0" left="60.0" right="60.0" top="60.0" />
+         </padding>
+         <children>
+            <Label fx:id="lblTesto" alignment="CENTER_RIGHT" maxWidth="680.0" minWidth="-Infinity" prefHeight="480.0" prefWidth="680.0" text="L'Unione dei Villain ha preso il controllo di un grattacielo nel distretto di Hosu. All'ultimo piano tengono in ostaggio dei civili e stanno preparando un attacco su larga scala. Gli Eroi Professionisti stanno contenendo i danni all'esterno, ma qualcuno deve infiltrarsi. Tocca a te. Ogni livello di questo edificio brulica di Nomu e criminali pronti a sfruttare le debolezze del tuo stile di combattimento. Calibra bene i tuoi attacchi, gestisci le energie e non abbassare la guardia. Inizia l'operazione di salvataggio." textFill="WHITE" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Consolas" size="18.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#onContinuaClick" prefHeight="70.0" prefWidth="193.0" text="Countinua">
+               <font>
+                  <Font name="Consolas" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

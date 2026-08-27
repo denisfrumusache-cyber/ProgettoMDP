@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg129693.Controller.ScenaCombattimentoController">
+   <children>
+      <BorderPane StackPane.alignment="TOP_CENTER">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="600.0" BorderPane.alignment="TOP_LEFT">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="122.0" text="Livello:1" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font name="Consolas" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnPausa" mnemonicParsing="false" onAction="#onPausaClick" prefHeight="46.0" prefWidth="50.0" text="||">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </top>
+         <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="500.0" prefWidth="558.0">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <children>
+                        <Label fx:id="lbNomeEroe" prefHeight="20.0" prefWidth="125.0" text="NomeEroe">
+                           <font>
+                              <Font name="Consolas" size="25.0" />
+                           </font>
+                        </Label>
+                        <ProgressBar fx:id="pbHPEroe" prefHeight="26.0" prefWidth="262.0" progress="1.0" style="-fx-background-color: green;">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ProgressBar>
+                        <Label fx:id="lbHPEroe" prefHeight="34.0" prefWidth="157.0" text="HP: 500/500">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <ProgressBar fx:id="pbStaminaEroe" prefHeight="18.0" prefWidth="255.0" progress="1.0" />
+                        <Label fx:id="lbStaminaEroe" text="Stamina: 100/100">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" maxWidth="530.0" prefHeight="500.0" prefWidth="530.0">
+                     <children>
+                        <Label fx:id="lbNomeVillain" text="NomeVillain">
+                           <font>
+                              <Font name="Consolas" size="25.0" />
+                           </font>
+                        </Label>
+                        <ProgressBar fx:id="pbHPVillain" prefHeight="26.0" prefWidth="262.0" progress="1.0" style="-fx-background-color: green;" />
+                        <Label fx:id="lbHPVillain" prefHeight="34.0" prefWidth="97.0" text="HP: 500/500">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <ProgressBar fx:id="pbStaminaVillain" prefHeight="18.0" prefWidth="255.0" progress="1.0" />
+                        <Label fx:id="lbStaminaVillain" text="Stamina: 100/100">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <VBox alignment="TOP_CENTER" prefHeight="313.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="lbDescrizione" alignment="TOP_LEFT" prefHeight="151.0" prefWidth="774.0" text="Azione del personaggio" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font name="Consolas" size="25.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="TOP_CENTER" prefHeight="166.0" prefWidth="800.0" spacing="30.0">
+                     <children>
+                        <Button fx:id="btnAttaccoBase" mnemonicParsing="false" onAction="#onAttaccoBaseClick" text="Attacco base">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnDifesa" mnemonicParsing="false" onAction="#onDifesaClick" text="Difesa">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnAttaccoSpeciale" mnemonicParsing="false" onAction="#onAttaccoSpecialeClick" text="Attacco speciale">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets top="50.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+      <VBox alignment="TOP_CENTER" prefHeight="220.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: rgba(0,0,0,0.85);" visible="false">
+         <children>
+            <Label prefHeight="71.0" prefWidth="149.0" text="PAUSA" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="45.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnRiprendi" mnemonicParsing="false" onAction="#onRiprendiClick" prefHeight="100.0" prefWidth="300.0" text="Riprendi">
+               <font>
+                  <Font name="Consolas" size="47.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEsci" mnemonicParsing="false" onAction="#onEsciClick" prefHeight="100.0" prefWidth="300.0" text="Esci ">
+               <font>
+                  <Font size="47.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+      </VBox>
+   </children>
+</StackPane>

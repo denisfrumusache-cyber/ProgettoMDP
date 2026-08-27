@@ -90,4 +90,12 @@ public class Eroe extends Personaggio {
     private void aggiornaSoglia() {
         sogliaLivello += INCREMENTO_SOGLIA_LIVELLO;
     }
+
+    public void recuperaVitaCompleta(){
+      this.setHpAttuali(this.getHpMax());
+    }
+
+    public void recuperaStaminaCompleta(){
+        this.setStaminaAttuale(this.getStaminaMax());
+    }
 }

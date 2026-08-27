@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg129693.Controller.SceltaPersonaggioController">
+   <top>
+      <Label text="Scegli il tuo Eroe!" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Consolas" size="27.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets bottom="25.0" left="50.0" right="50.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <VBox fx:id="CardDeku" alignment="TOP_CENTER" onMouseClicked="#onCardCliccata" prefHeight="458.0" prefWidth="225.0" spacing="10.0" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-padding: 15; -fx-border-width: 3;">
+               <children>
+                  <ImageView fitHeight="137.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Immagini/ImmaginiRPG/DekuRpg.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="TOP_LEFT" prefHeight="34.0" prefWidth="118.0" text=" HP: 500">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="STAMINA: 100">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="POTENZA : 50">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="VELOCITA: 30">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="TECNICA: 40">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="34.0" prefWidth="189.0" text="QUIRK: ONE FOR ALL">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox fx:id="cardBakugo" alignment="TOP_CENTER" onMouseClicked="#onCardCliccata" prefHeight="458.0" prefWidth="225.0" spacing="10.0" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-padding: 15; -fx-border-width: 3;">
+               <children>
+                  <ImageView fitHeight="137.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Immagini/ImmaginiRPG/KatsukiRPG.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="TOP_LEFT" text=" HP: 480">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="STAMINA: 110">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="POTENZA : 48">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="VELOCITA: 45">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="TECNICA: 35">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="34.0" prefWidth="202.0" text="QUIRK: ESPLOSIONE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox fx:id="cardTotoroki" alignment="TOP_CENTER" onMouseClicked="#onCardCliccata" prefHeight="458.0" prefWidth="234.0" spacing="10.0" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-padding: 15; -fx-border-width: 3;">
+               <children>
+                  <ImageView fitHeight="137.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Immagini/ImmaginiRPG/ShotoRPG.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="TOP_LEFT" text=" HP: 470">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="STAMINA: 105">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="POTENZA : 44">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="VELOCITA: 40">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label text="TECNICA: 48">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="44.0" prefWidth="198.0" text="QUIRK: FUOCO E GHIACCIO">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <Button fx:id="btnInizia" disable="true" mnemonicParsing="false" onAction="#onIniziaClick" prefHeight="0.0" prefWidth="154.0" text="Inizia" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="Consolas Bold" size="19.0" />
+         </font>
+      </Button>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="800.0" spacing="100.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg129693.Controller.IntraLivelliController">
+   <children>
+      <Label prefHeight="32.0" prefWidth="693.0" text="Complimenti, hai sconfitto il nemico. Che cosa vuoi fare adesso?" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="Consolas" size="19.0" />
+         </font>
+      </Label>
+      <HBox alignment="TOP_CENTER" prefHeight="182.0" prefWidth="803.0" spacing="100.0">
+         <children>
+            <Button fx:id="btnSalvaPartita" mnemonicParsing="false" onAction="#onSalvaPartitaClick" prefHeight="70.0" prefWidth="210.0" text="Salva partita">
+               <font>
+                  <Font name="Consolas" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnContinuaBattaglia" mnemonicParsing="false" onAction="#onContinuaBattagliaClick" prefHeight="70.0" prefWidth="210.0" text="Continua battaglia">
+               <font>
+                  <Font name="Consolas" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="100.0" />
+   </padding>
+</VBox>

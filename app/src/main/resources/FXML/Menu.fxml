@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg129693.Controller.MenuController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" StackPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="87.0" prefWidth="474.0" text="My Hero Academia RPG">
+               <font>
+                  <Font name="Consolas" size="42.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnNuovaPartita" alignment="CENTER" mnemonicParsing="false" onAction="#onNuovaPartitaClick" prefHeight="100.0" prefWidth="300.0" text="Nuova Partita">
+               <font>
+                  <Font name="Consolas" size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnCaricaPartita" mnemonicParsing="false" onAction="#onCaricaPartitaClick" prefHeight="100.0" prefWidth="300.0" text="Carica Partita">
+               <font>
+                  <Font name="Consolas" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

@@ -3,15 +3,20 @@ package it.unicam.cs.mpgc.rpg129693.classiPrincipali;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
 
 public class GestoreBattaglia {
-    private final Personaggio eroe;
+    private final Eroe eroe;
     private final Villain villain;
     private boolean turnoEroe;
 
-    public GestoreBattaglia(Personaggio eroe, Villain villain) {
+    public GestoreBattaglia(Eroe eroe, Villain villain) {
         if (eroe == null || villain == null) {
             throw new IllegalArgumentException("Eroe e Villain non possono essere null.");
         }
         this.eroe = eroe;
+        if(this.eroe.getHpAttuali() != this.eroe.getHpMax()
+                || this.eroe.getStaminaAttuale() != this.eroe.getStaminaMax()){
+            this.eroe.recuperaVitaCompleta();
+            this.eroe.recuperaStaminaCompleta();
+        }
         this.villain = villain;
         this.turnoEroe = eroe.getVelocita() >= villain.getVelocita();
         if (turnoEroe) {
