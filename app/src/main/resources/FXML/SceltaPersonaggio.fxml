@@ -34,7 +34,7 @@
                <children>
                   <ImageView fitHeight="137.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Immagini/ImmaginiRPG/DekuRpg.png" />
+                        <Image url="@../Immagini/DekuRpg.png" />
                      </image>
                   </ImageView>
                   <Label alignment="TOP_LEFT" prefHeight="34.0" prefWidth="118.0" text=" HP: 500">
@@ -73,7 +73,7 @@
                <children>
                   <ImageView fitHeight="137.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Immagini/ImmaginiRPG/KatsukiRPG.png" />
+                        <Image url="@../Immagini/KatsukiRPG.png" />
                      </image>
                   </ImageView>
                   <Label alignment="TOP_LEFT" text=" HP: 480">
@@ -112,7 +112,7 @@
                <children>
                   <ImageView fitHeight="137.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Immagini/ImmaginiRPG/ShotoRPG.png" />
+                        <Image url="@../Immagini/ShotoRPG.png" />
                      </image>
                   </ImageView>
                   <Label alignment="TOP_LEFT" text=" HP: 470">

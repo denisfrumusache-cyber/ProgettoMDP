@@ -38,7 +38,7 @@ public class StoriaIntroController {
             btnContinua.setVisible(false);
         }
     }
-    
+
     private void avviaAnimazioneTesto() {
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(2), lblTesto);
         fadeIn.setFromValue(0.0);
@@ -56,6 +56,6 @@ public class StoriaIntroController {
     private void navigaACombattimento() {
         FXMLLoader loader = SceneManager.getInstance().caricaConLoader(Schermata.COMBATTIMENTO);
         ScenaCombattimentoController controller = loader.getController();
-        controller.setEroe(eroeSelezionato);
+        controller.setDatiPartita(eroeSelezionato, null);
     }
 }

@@ -8,7 +8,8 @@ import it.unicam.cs.mpgc.rpg129693.classiPrincipali.Torre;
 import java.io.*;
 
 public class GestoreSalvataggi {
-    private static final String NOME_FILE_SALVATAGGIO = "salvataggio.json";
+    private static final String NOME_FILE_SALVATAGGIO =
+            "src/main/resources/SalvataggiJson/salvataggio.json";
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     /** Salva lo stato corrente di gioco su file. */

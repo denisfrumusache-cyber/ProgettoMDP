@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg129693.Quirks;
 
+import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
@@ -7,7 +8,7 @@ public class OneForAll extends Quirk {
 
     public OneForAll() {
         super(
-            "One For All",
+            "OneForAll",
             25,
             "Quirk ereditario che accumula energia fisica pura. Canalizzando il potere tramite il 'Full Cowl', " +
             "l'utilizzatore rilascia devastanti Smash fisici (come il Detroit Smash) che aumentano di potenza " +
@@ -24,12 +25,12 @@ public class OneForAll extends Quirk {
     }
 
     private void eseguiSmashPotenziato(Personaggio utilizzatore, Personaggio bersaglio) {
-        System.out.println(utilizzatore.getAlias() + " supera i suoi limiti! 100% DETROIT SMASH!");
+        loggerBattaglia.scrivi(utilizzatore.getAlias() + " usa United States of SMASH!");
         bersaglio.riceviDanno(utilizzatore, utilizzatore.getPotenza() * 4);
     }
 
     private void eseguiSmashNormale(Personaggio utilizzatore, Personaggio bersaglio) {
-        System.out.println(utilizzatore.getAlias() + " usa Delaware Smash!");
+        loggerBattaglia.scrivi(utilizzatore.getAlias() + " usa Delaware Smash!");
         bersaglio.riceviDanno(utilizzatore, utilizzatore.getPotenza() * 2);
     }
 

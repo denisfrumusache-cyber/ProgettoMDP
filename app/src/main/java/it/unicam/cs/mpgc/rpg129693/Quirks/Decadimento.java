@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg129693.Quirks;
 
 import it.unicam.cs.mpgc.rpg129693.Utils.CalcolaDanno;
+import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
@@ -22,10 +23,10 @@ public class Decadimento extends Quirk {
     @Override
     public void eseguiAzione(Personaggio utilizzatore, Personaggio bersaglio) {
         if (CalcolaDanno.colpoSchivato(utilizzatore, bersaglio)) {
-            System.out.println(bersaglio.getAlias() + " ha schivato il tocco di " + utilizzatore.getAlias());
+            loggerBattaglia.scrivi(bersaglio.getAlias() + " ha schivato il tocco di " + utilizzatore.getAlias());
             return;
         }
-        System.out.println(utilizzatore.getAlias() + " attiva Decadimento!");
+        loggerBattaglia.scrivi(utilizzatore.getAlias() + " attiva Decadimento!");
         applicaDecadimento(utilizzatore, bersaglio);
     }
 

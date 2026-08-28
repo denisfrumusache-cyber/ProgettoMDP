@@ -1,12 +1,12 @@
 package it.unicam.cs.mpgc.rpg129693.InterfacciaGrafica;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
-
 public class AppGrafica extends Application {
-
     @Override
-    public void start(Stage stage) {
-        // Interfaccia grafica non ancora implementata
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("My Hero Academia RPG");
+        primaryStage.setResizable(false);
+        SceneManager.getInstance().setStage(primaryStage);
+        SceneManager.getInstance().cambiaSchermata(Schermata.MENU);
     }
 }

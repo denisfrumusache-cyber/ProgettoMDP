@@ -10,7 +10,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unicam.cs.mpgc.rpg129693.Controller.StoriaIntroController">
    <children>
-      <VBox fx:id="btnContinua" alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
+      <VBox  alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
          <padding>
             <Insets bottom="60.0" left="60.0" right="60.0" top="60.0" />
          </padding>
@@ -20,7 +20,7 @@
                   <Font name="Consolas" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#onContinuaClick" prefHeight="70.0" prefWidth="193.0" text="Countinua">
+            <Button  fx:id="btnContinua" mnemonicParsing="false" onAction="#onContinuaClick" prefHeight="70.0" prefWidth="193.0" text="Countinua">
                <font>
                   <Font name="Consolas" size="30.0" />
                </font>

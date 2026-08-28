@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg129693.classiAstratte;
 
 import it.unicam.cs.mpgc.rpg129693.Utils.CalcolaDanno;
+import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
 
 import java.util.Objects;
 
@@ -176,7 +177,7 @@ public abstract class Personaggio {
 
     public void attaccoBase(Personaggio bersaglio) {
         if (CalcolaDanno.colpoSchivato(this, bersaglio)) {
-            System.out.println(bersaglio.getAlias() + " ha schivato l'attacco!");
+            loggerBattaglia.scrivi(bersaglio.getAlias() + " ha schivato l'attacco!");
             return;
         }
         bersaglio.riceviDanno(this, this.potenza);

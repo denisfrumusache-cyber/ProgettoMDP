@@ -26,7 +26,7 @@ public class GestoreBattaglia {
         }
     }
 
-    /** @return false se non è il turno dell'eroe, la battaglia è finita, o la stamina è insufficiente */
+
     public boolean eseguiAzioneEroe(int sceltaAzione) {
         if (!turnoEroe || isFinita()) {
             return false;

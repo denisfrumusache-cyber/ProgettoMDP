@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg129693.classiPrincipali;
 
+import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
@@ -55,9 +56,10 @@ public class Villain extends Personaggio {
 
     private void eseguiMossa(int mossa, Personaggio bersaglio) {
         switch (mossa) {
-            case 3 -> { attaccoSpeciale(bersaglio); System.out.println(getAlias() + " usa il suo quirk!"); }
-            case 2 -> { difenditi();                System.out.println(getAlias() + " si difende!"); }
-            default -> { attaccoBase(bersaglio);    System.out.println(getAlias() + " esegue un attacco fisico!"); }
+            case 3 -> { attaccoSpeciale(bersaglio);  }
+            case 2 -> { difenditi();              loggerBattaglia.scrivi( this.getAlias() + " decide di difendersi ");            }
+            default -> { attaccoBase(bersaglio);  loggerBattaglia.scrivi( this.getAlias() + " sferra un attacco fisico!");
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg129693.Quirks;
 
+import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
@@ -26,7 +27,7 @@ public class MezzoCaldoMezzoFreddo extends Quirk {
     }
 
     private void attaccaConGhiaccio(Personaggio utilizzatore, Personaggio bersaglio) {
-        System.out.println(utilizzatore.getAlias() + " genera un'ondata di ghiaccio!");
+        loggerBattaglia.scrivi(utilizzatore.getAlias() + " genera un'ondata di ghiaccio!");
         bersaglio.riceviDanno(utilizzatore, utilizzatore.getTecnica());
         rallentaBersaglio(bersaglio);
     }
@@ -36,7 +37,7 @@ public class MezzoCaldoMezzoFreddo extends Quirk {
     }
 
     private void attaccaConFuoco(Personaggio utilizzatore, Personaggio bersaglio) {
-        System.out.println(utilizzatore.getAlias() + " rilascia una fiammata devastante!");
+        loggerBattaglia.scrivi(utilizzatore.getAlias() + " rilascia una fiammata devastante!");
         bersaglio.riceviDanno(utilizzatore, utilizzatore.getPotenza() * 3);
     }
 }

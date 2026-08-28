@@ -24,7 +24,7 @@ public class CalcolaDanno {
     private static int applicaCritico(int danno, Personaggio attaccante) {
         boolean isCritico = RANDOM.nextInt(100) < attaccante.getTecnica();
         if (isCritico) {
-            System.out.println("COLPO CRITICO!");
+            loggerBattaglia.scrivi("COLPO CRITICO!");
             return (int) (danno * MOLTIPLICATORE_CRITICO);
         }
         return danno;

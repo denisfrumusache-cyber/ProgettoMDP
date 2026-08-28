@@ -19,7 +19,7 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="600.0" BorderPane.alignment="TOP_LEFT">
                <children>
-                  <Label prefHeight="30.0" prefWidth="122.0" text="Livello:1" textOverrun="CLIP" wrapText="true">
+                  <Label fx:id="lblLivello" prefHeight="30.0" prefWidth="184.0" text="Livello:1" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font name="Consolas" size="24.0" />
                      </font>
@@ -127,7 +127,7 @@
             </VBox>
          </bottom>
       </BorderPane>
-      <VBox alignment="TOP_CENTER" prefHeight="220.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: rgba(0,0,0,0.85);" visible="false">
+      <VBox fx:id="panelPausa" alignment="TOP_CENTER" prefHeight="220.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: rgba(0,0,0,0.85);" visible="false">
          <children>
             <Label prefHeight="71.0" prefWidth="149.0" text="PAUSA" textFill="WHITE">
                <font>

@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg129693.Quirks;
 
+import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
@@ -21,7 +22,7 @@ public class Gecko extends Quirk {
     private void difendiERigenera(Personaggio utilizzatore) {
         utilizzatore.difenditi();
         recuperaHp(utilizzatore);
-        System.out.println(utilizzatore.getAlias() + " si rigenera e aumenta le sue difese");
+        loggerBattaglia.scrivi(utilizzatore.getAlias() + " si rigenera e aumenta le sue difese");
     }
 
     private static void recuperaHp(Personaggio utilizzatore) {
