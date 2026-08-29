@@ -1,8 +1,8 @@
 
 package it.unicam.cs.mpgc.rpg129693.Controller;
 import it.unicam.cs.mpgc.rpg129693.Data.GestoreSalvataggi;
-import it.unicam.cs.mpgc.rpg129693.InterfacciaGrafica.SceneManager;
-import it.unicam.cs.mpgc.rpg129693.InterfacciaGrafica.Schermata;
+import it.unicam.cs.mpgc.rpg129693.Gui.SceneManager;
+import it.unicam.cs.mpgc.rpg129693.Gui.Schermata;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

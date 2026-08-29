@@ -1,4 +1,6 @@
-package it.unicam.cs.mpgc.rpg129693.classiAstratte;
+package it.unicam.cs.mpgc.rpg129693.Model.Quirks;
+
+import it.unicam.cs.mpgc.rpg129693.Model.Personaggio;
 
 import java.util.Objects;
 

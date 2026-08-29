@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg129693.Data;
 
-import it.unicam.cs.mpgc.rpg129693.Quirks.*;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
+import it.unicam.cs.mpgc.rpg129693.Model.Quirks.*;
+import it.unicam.cs.mpgc.rpg129693.Model.Quirks.Quirk;
 import java.util.Map;
 import java.util.function.Supplier;
 

@@ -1,8 +1,7 @@
-package it.unicam.cs.mpgc.rpg129693.classiPrincipali;
+package it.unicam.cs.mpgc.rpg129693.Model;
 
+import it.unicam.cs.mpgc.rpg129693.Model.Quirks.Quirk;
 import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
 public class Villain extends Personaggio {
     private int esperienzaRilasciata;

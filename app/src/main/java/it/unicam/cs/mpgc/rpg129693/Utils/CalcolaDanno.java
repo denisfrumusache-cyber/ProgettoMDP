@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg129693.Utils;
 
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
+import it.unicam.cs.mpgc.rpg129693.Model.Personaggio;
 import java.util.Random;
 
 public class CalcolaDanno {

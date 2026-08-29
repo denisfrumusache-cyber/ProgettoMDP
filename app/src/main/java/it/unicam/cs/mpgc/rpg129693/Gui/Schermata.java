@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129693.InterfacciaGrafica;
+package it.unicam.cs.mpgc.rpg129693.Gui;
 
 public enum Schermata {
     MENU,

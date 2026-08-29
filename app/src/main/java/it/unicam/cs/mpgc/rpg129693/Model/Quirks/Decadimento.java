@@ -1,9 +1,8 @@
-package it.unicam.cs.mpgc.rpg129693.Quirks;
+package it.unicam.cs.mpgc.rpg129693.Model.Quirks;
 
+import it.unicam.cs.mpgc.rpg129693.Model.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.Utils.CalcolaDanno;
 import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
 public class Decadimento extends Quirk {
     private static final int DECREMENTO_STATISTICHE = 10;

@@ -1,7 +1,6 @@
-package it.unicam.cs.mpgc.rpg129693.classiPrincipali;
+package it.unicam.cs.mpgc.rpg129693.Model;
 
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
+import it.unicam.cs.mpgc.rpg129693.Model.Quirks.Quirk;
 
 public class Eroe extends Personaggio {
     private static final int XP_SOGLIA_INIZIALE = 100;

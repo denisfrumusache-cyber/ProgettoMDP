@@ -1,8 +1,8 @@
 package it.unicam.cs.mpgc.rpg129693.Data;
 
-import it.unicam.cs.mpgc.rpg129693.classiPrincipali.Eroe;
-import it.unicam.cs.mpgc.rpg129693.classiPrincipali.Torre;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
+import it.unicam.cs.mpgc.rpg129693.Model.Eroe;
+import it.unicam.cs.mpgc.rpg129693.Model.Torre;
+import it.unicam.cs.mpgc.rpg129693.Model.Quirks.Quirk;
 
 public class StatoSalvataggio {
     private String id;

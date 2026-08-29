@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129693.InterfacciaGrafica;
+package it.unicam.cs.mpgc.rpg129693.Gui;
 import javafx.application.Application;
 import javafx.stage.Stage;
 public class AppGrafica extends Application {

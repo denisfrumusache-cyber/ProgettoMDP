@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129693.classiPrincipali;
+package it.unicam.cs.mpgc.rpg129693.Model;
 
 import java.util.HashMap;
 import java.util.Map;

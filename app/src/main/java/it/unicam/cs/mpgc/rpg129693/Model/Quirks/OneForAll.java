@@ -1,8 +1,7 @@
-package it.unicam.cs.mpgc.rpg129693.Quirks;
+package it.unicam.cs.mpgc.rpg129693.Model.Quirks;
 
+import it.unicam.cs.mpgc.rpg129693.Model.Personaggio;
 import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Quirk;
 
 public class OneForAll extends Quirk {
 

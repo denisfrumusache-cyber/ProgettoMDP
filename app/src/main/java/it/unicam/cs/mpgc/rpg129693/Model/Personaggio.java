@@ -1,5 +1,6 @@
-package it.unicam.cs.mpgc.rpg129693.classiAstratte;
+package it.unicam.cs.mpgc.rpg129693.Model;
 
+import it.unicam.cs.mpgc.rpg129693.Model.Quirks.Quirk;
 import it.unicam.cs.mpgc.rpg129693.Utils.CalcolaDanno;
 import it.unicam.cs.mpgc.rpg129693.Utils.loggerBattaglia;
 

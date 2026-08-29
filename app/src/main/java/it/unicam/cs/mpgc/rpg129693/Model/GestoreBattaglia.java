@@ -1,6 +1,4 @@
-package it.unicam.cs.mpgc.rpg129693.classiPrincipali;
-
-import it.unicam.cs.mpgc.rpg129693.classiAstratte.Personaggio;
+package it.unicam.cs.mpgc.rpg129693.Model;
 
 public class GestoreBattaglia {
     private final Eroe eroe;

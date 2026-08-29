@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg129693.InterfacciaGrafica;
+package it.unicam.cs.mpgc.rpg129693.Gui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

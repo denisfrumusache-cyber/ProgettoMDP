@@ -2,8 +2,8 @@ package it.unicam.cs.mpgc.rpg129693.Data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import it.unicam.cs.mpgc.rpg129693.classiPrincipali.Eroe;
-import it.unicam.cs.mpgc.rpg129693.classiPrincipali.Torre;
+import it.unicam.cs.mpgc.rpg129693.Model.Eroe;
+import it.unicam.cs.mpgc.rpg129693.Model.Torre;
 
 import java.io.*;
 
