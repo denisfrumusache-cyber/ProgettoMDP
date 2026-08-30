@@ -168,7 +168,7 @@ public class ScenaCombattimentoController {
 
         Villain nemicoSconfitto = torre.getNemicoCorrente();
         eroe.guadagnaEsperienza(nemicoSconfitto.getEsperienzaRilasciata());
-        torre.avanzaLivello();
+        
         int livelloDopo = eroe.getLivello();
         if (livelloDopo > livelloPrima){
            lbDescrizione.setText( "⭐ LEVEL UP! Sei salito al livello " + livelloDopo + "!\n"
@@ -176,8 +176,9 @@ public class ScenaCombattimentoController {
                     + "  Stamina Max: " + eroe.getStaminaMax());
         }
         aggiornaStatisticheUI();
-        PauseTransition pausaLevelUp = new PauseTransition(Duration.seconds(1.5));
+        PauseTransition pausaLevelUp = new PauseTransition(Duration.seconds(1.2));
         pausaLevelUp.setOnFinished(event -> {
+            torre.avanzaLivello();
             if (torre.isTorreFinita()) {
                 navigaAFineGioco(true);
             } else {

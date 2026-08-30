@@ -36,7 +36,7 @@ java {
 }
 
 application {
-    mainClass = "it.unicam.cs.mpgc.rpg129693.Main.Main"
+    mainClass = "it.unicam.cs.mpgc.rpg129693.Main"
 }
 javafx {
     version = "21"
