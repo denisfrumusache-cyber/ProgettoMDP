@@ -14,14 +14,15 @@ public class Gecko extends Quirk {
 
     @Override
     public void eseguiAzione(Personaggio utilizzatore, Personaggio bersaglio) {
-        utilizzatore.attaccoBase(bersaglio);
         difendiERigenera(utilizzatore);
+        utilizzatore.attaccoBase(bersaglio);
+
     }
 
     private void difendiERigenera(Personaggio utilizzatore) {
         utilizzatore.difenditi();
         recuperaHp(utilizzatore);
-        loggerBattaglia.scrivi(utilizzatore.getAlias() + " si rigenera e aumenta le sue difese");
+        loggerBattaglia.scrivi(  utilizzatore.getAlias() + " sferra un colpo di spada!\n" + utilizzatore.getAlias() + " si rigenera e aumenta le sue difese");
     }
 
     private static void recuperaHp(Personaggio utilizzatore) {

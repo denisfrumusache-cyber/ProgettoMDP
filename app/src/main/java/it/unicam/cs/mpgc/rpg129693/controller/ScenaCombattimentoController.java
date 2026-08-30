@@ -146,6 +146,7 @@ public class ScenaCombattimentoController {
         lbStaminaVillain.setText("Stamina: " + nemico.getStaminaAttuale() + "/" + nemico.getStaminaMax());
         pbStaminaVillain.setProgress((double) nemico.getStaminaAttuale() / nemico.getStaminaMax());
     }
+
     private boolean controllaFinePartita() {
         if (!battaglia.isFinita()) {
             return false;
@@ -171,7 +172,7 @@ public class ScenaCombattimentoController {
         
         int livelloDopo = eroe.getLivello();
         if (livelloDopo > livelloPrima){
-           lbDescrizione.setText( "⭐ LEVEL UP! Sei salito al livello " + livelloDopo + "!\n"
+           lbDescrizione.setText( "LEVEL UP! Sei salito al livello " + livelloDopo + "!\n"
                     + "HP Max: " + eroe.getHpMax()
                     + "  Stamina Max: " + eroe.getStaminaMax());
         }
@@ -193,11 +194,13 @@ public class ScenaCombattimentoController {
         if (panelPausa != null) panelPausa.setVisible(true);
         disabilitaBottoniAzione(true);
     }
+
     @FXML
     public void onRiprendiClick() {
         if (panelPausa != null) panelPausa.setVisible(false);
         disabilitaBottoniAzione(false);
     }
+
     @FXML
     public void onEsciClick() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -210,16 +213,19 @@ public class ScenaCombattimentoController {
             }
         });
     }
+
     private void disabilitaBottoniAzione(boolean disabilita) {
         btnAttaccoBase.setDisable(disabilita);
         btnDifesa.setDisable(disabilita);
         btnAttaccoSpeciale.setDisable(disabilita);
     }
+
     private void navigaAFineGioco(boolean vittoria) {
         FXMLLoader loader = SceneManager.getInstance().caricaConLoader(Schermata.FINE_GIOCO);
         FineGiocoController controller = loader.getController();
         controller.setVittoria(vittoria);
     }
+
     private void navigaAIntermezzo() {
         FXMLLoader loader = SceneManager.getInstance().caricaConLoader(Schermata.INTERMEZZO);
         IntraLivelliController controller = loader.getController();

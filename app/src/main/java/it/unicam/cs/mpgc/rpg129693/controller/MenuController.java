@@ -15,11 +15,12 @@ import javafx.scene.control.Button;
 public class MenuController {
     @FXML private Button btnNuovaPartita;
     @FXML private Button btnCaricaPartita;
+
     @FXML
     public void onNuovaPartitaClick() {
-
         SceneManager.getInstance().cambiaSchermata(Schermata.SCELTA_PERSONAGGIO);
     }
+
     @FXML
     public void onCaricaPartitaClick() {
         StatoSalvataggio salvataggio = GestoreSalvataggi.caricaPartita();
@@ -36,6 +37,7 @@ public class MenuController {
         alert.setHeaderText("Non è stata trovata nessuna partita salvata.");
         alert.showAndWait();
     }
+
     private void riprendiPartitaSalvata(StatoSalvataggio salvataggio) {
         Eroe eroe = salvataggio.ricostruisciEroe();
         Torre torre = ricostruisciTorreDalSalvataggio(salvataggio);
@@ -48,6 +50,7 @@ public class MenuController {
         torre.setLivelloCorrente(salvataggio.getLivelloTorreCorrente());
         return torre;
     }
+
     private void navigaAIntermezzo(Eroe eroe, Torre torre) {
         FXMLLoader loader = SceneManager.getInstance().caricaConLoader(Schermata.INTERMEZZO);
         IntraLivelliController controller = loader.getController();
